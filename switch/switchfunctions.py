@@ -244,15 +244,15 @@ class SwitchFunctions():
         if not settings.PBX_FREESWITCH_LOCAL:
             fal = FileAbsLayer()
         for p in plist:
-            root = etree.Element('profile', name=p.name)
-            root.set('name', p.name)
-            gateways = etree.SubElement(root, 'gateways')
-            etree.SubElement(gateways, 'X-PRE-PROCESS', cmd='include', data='%s/*.xml' % p.name)
-            domains = etree.SubElement(root, 'domains')
+            ele_root = etree.Element('profile', name=p.name)
+            ele_root.set('name', p.name)
+            ele_gateways = etree.SubElement(ele_root, 'gateways')
+            etree.SubElement(ele_gateways, 'X-PRE-PROCESS', cmd='include', data='%s/*.xml' % p.name)
+            ele_domains = etree.SubElement(ele_root, 'domains')
             dlist = switch.models.SipProfileDomain.objects.filter(sip_profile_id=p.id).order_by('name')
             for d in dlist:
-                etree.SubElement(domains, 'domain', name=d.name, alias=d.alias, parse=d.parse)
-            settings = etree.SubElement(root, 'settings')
+                etree.SubElement(ele_domains, 'domain', name=d.name, alias=d.alias, parse=d.parse)
+            ele_settings = etree.SubElement(ele_root, 'settings')
             slist = switch.models.SipProfileSetting.objects.filter(
                         sip_profile_id=p.id, enabled='true'
                         ).order_by('name')
@@ -261,13 +261,13 @@ class SwitchFunctions():
                     s_value = ''
                 else:
                     s_value = s.value
-                etree.SubElement(settings, 'param', name=s.name, value=s_value)
+                etree.SubElement(ele_settings, 'param', name=s.name, value=s_value)
             etree.indent(root)
             xml = str(etree.tostring(root), "utf-8")
-            del settings
-            del domains
-            del gateways
-            del root
+            del ele_settings
+            del ele_domains
+            del ele_gateways
+            del ele_root
             try:
                 os.makedirs('%s/%s' % (confdir, p.name), mode=0o755, exist_ok=True)
             except OSError:
