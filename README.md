@@ -39,16 +39,16 @@ Telephony features include:
 
 ## Documentation
 
-Documentation is available on the [DjangoPBX Site](https://www.djangopbx.com/static/documentation/) and can be contributed to via its own [respository](https://github.com/djangopbx/djangopbx-docs)
+Documentation is available on the [DjangoPBX Site](https://www.djangopbx.com/static/documentation/) and can be contributed to via its own [respository](https://codeberg.org/DjangoPBX/djangopbx-docs)
 
 ## Under development
 This code has entered a stage of Alpha Testing.
 Several test deployments have been made and testing is underway.
 
-Installation has been scripted at [djangopbx-install.sh](https://github.com/djangopbx/djangopbx-install.sh)
+Installation has been scripted at [djangopbx-install.sh](https://codeberg.org/DjangoPBX/djangopbx-install.sh)
 
 ## License Agreement
 
 If you contribute code to this project, you implicitly allow your code to be distributed under the MIT license. You are also implicitly verifying that all code is your original work.
 
-Copyright (c) 2016-2024, [The DjangoPBX authors](https://github.com/djangopbx/djangopbx/graphs/contributors) (MIT License)<br>
+Copyright (c) 2016-2024, [The DjangoPBX authors](https://codeberg.org/DjangoPBX/DjangoPBX/activity/contributors) (MIT License)<br>
